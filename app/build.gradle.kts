@@ -42,19 +42,75 @@ android {
 }
 
 dependencies {
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.activity.compose)
-    implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.compose.ui)
-    implementation(libs.androidx.compose.ui.graphics)
-    implementation(libs.androidx.compose.ui.tooling.preview)
-    implementation(libs.androidx.compose.material3)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.compose.ui.test.junit4)
-    debugImplementation(libs.androidx.compose.ui.tooling)
-    debugImplementation(libs.androidx.compose.ui.test.manifest)
+    // Core
+    implementation("androidx.core:core-ktx:1.12.0")
+    implementation("androidx.activity:activity-compose:1.9.0")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2")
+    implementation("androidx.navigation:navigation-compose:2.7.6")
+
+    // Compose
+    implementation(platform("androidx.compose:compose-bom:2024.01.00"))
+    implementation("androidx.compose.ui:ui")
+    implementation("androidx.compose.ui:ui-graphics")
+    implementation("androidx.compose.ui:ui-tooling-preview")
+    implementation("androidx.compose.material3:material3")
+    val materialVersion = "1.6.0"
+    implementation("androidx.compose.material:material:$materialVersion")
+    implementation("androidx.compose.material:material-icons-core:$materialVersion")
+    implementation("androidx.compose.material:material-icons-extended:$materialVersion")
+
+    // Biometric
+    implementation("androidx.biometric:biometric:1.2.0-alpha05")
+
+    // Credentials
+    implementation("androidx.credentials:credentials:1.5.0")
+    implementation("androidx.credentials:credentials-play-services-auth:1.5.0")
+
+    // Firebase
+    implementation(platform("com.google.firebase:firebase-bom:32.7.1"))
+    implementation("com.google.firebase:firebase-auth")
+    implementation("com.google.firebase:firebase-firestore")
+    implementation("com.google.firebase:firebase-storage")
+    implementation("com.google.firebase:firebase-appcheck-playintegrity")
+    implementation("com.google.android.gms:play-services-auth:20.7.0")
+
+    // Dagger Hilt
+    val daggerVersion = "2.50"
+    implementation("com.google.dagger:hilt-android:$daggerVersion")
+    ksp("com.google.dagger:hilt-compiler:$daggerVersion")
+    androidTestImplementation("com.google.dagger:hilt-android-testing:$daggerVersion")
+    kspAndroidTest("com.google.dagger:hilt-compiler:$daggerVersion")
+    testImplementation("com.google.dagger:hilt-android-testing:$daggerVersion")
+    kspTest("com.google.dagger:hilt-compiler:$daggerVersion")
+    implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
+
+    // Coil
+    implementation("io.coil-kt:coil-compose:2.5.0")
+
+    // Google Maps
+    implementation("com.google.android.gms:play-services-location:21.1.0")
+    implementation("com.google.android.gms:play-services-maps:18.2.0")
+    val mapsComposeVersion = "4.3.2"
+    implementation("com.google.maps.android:maps-compose:$mapsComposeVersion")
+    implementation("com.google.maps.android:maps-compose-utils:$mapsComposeVersion")
+    implementation("com.google.maps.android:maps-compose-widgets:$mapsComposeVersion")
+
+    // CameraX
+    val cameraXVersion = "1.3.1"
+    implementation("androidx.camera:camera-camera2:$cameraXVersion")
+    implementation("androidx.camera:camera-lifecycle:$cameraXVersion")
+    implementation("androidx.camera:camera-view:$cameraXVersion")
+    implementation("androidx.camera:camera-extensions:$cameraXVersion")
+
+    // Testing
+    testImplementation("junit:junit:4.13.2")
+    androidTestImplementation("androidx.test.ext:junit:1.1.5")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    androidTestImplementation(platform("androidx.compose:compose-bom:2024.01.00"))
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4")
+    debugImplementation("androidx.compose.ui:ui-tooling")
+    debugImplementation("androidx.compose.ui:ui-test-manifest")
+    testImplementation("org.mockito:mockito-core:5.10.0")
 }
